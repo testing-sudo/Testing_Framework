@@ -1,0 +1,95 @@
+<!DOCTYPE html> <!-- document type as html5-->
+<html lang="en" xmlns:th="https://www.thymeleaf.org"> <!-- Thymeleaf, server side java template-->
+
+<head>
+    <style>
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times Roman';
+            background: url('/options/test.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 20px;
+        }
+
+        .navbar a {
+            color: #4caf50;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 25px;
+
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+
+        .content {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 80%;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 800px;
+        }
+
+        .content h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #4caf50;
+            text:bold;
+        }
+
+        .content p {
+            font-size: 25px;
+            color: black;
+            text : bold;
+            line-height: 1.6;
+        }
+         .navbar-right span {
+            margin-right: 15px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="navbar">
+    <div>
+        <a class="active" href="/homemenu">Home</a>
+        <a href="/profiles">Family Profiles</a>
+    </div>
+    <div class="navbar-right">
+        <span th:text="${username}">Welcome User</span>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+<div class="content">
+    <h1>Welcome to Eco Explorers!</h1>
+    <p>Fun and unique platform that turns teaching kids about energy conservation into an exciting adventure! We designed our system with the belief that every child has the potential to make a difference in our world, starting with understanding how energy works and how to use it wisely. Here, we combine engaging, hands-on learning activities with game customized by parents to make sure every child feels a personal connection to the journey towards electricity efficiency. Whether exploring how to conserve electricity at home, Eco Explorers makes energy efficiency learning an enjoyable and meaningful experience for kids, all under the watchful guidance of their biggest heroes: their parents.</p>
+</div>
+</body>
+
+</html>

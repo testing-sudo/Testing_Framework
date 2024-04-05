@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+            html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times Roman';
+            background: url('/options/test.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 20px;
+
+
+        }
+
+        .navbar a {
+            color: #4caf50;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-size : 25px;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+
+        .navbar-right span {
+            margin-right: 15px;
+            font-size: 25px;
+        }
+
+       .profile-container {
+              max-width: 1000px;
+              margin: 50px auto;
+              background-color: #fff;
+              padding: 25px;
+              border-radius: 20px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              overflow: auto;
+
+                    }
+
+                    .form-block {
+                        margin-bottom: 20px;
+                        font-size:25px;
+                    }
+
+                    .form-block label {
+                        display: block;
+                        margin: 10px 0;
+
+                    }
+
+                    .form-block img {
+                        width: 100px;
+                        height: 100px;
+                        margin-right: 10px;
+                        border-radius: 5px;
+
+                    }
+
+                    button, input[type="submit"] {
+                        background-color: #4caf50;
+                        color: white;
+                        padding: 12px 24px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+
+                    button:hover, input[type="submit"]:hover {
+                        background-color: #388e3c;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 5px;
+                        border: 1px solid #ddd;
+                        font-family: 'Times Roman';
+                        font-size: 25px;
+                        margin-top: 10px;
+                    }
+
+                    input[type="text"], input[type="radio"] {
+                        font-size: 25px;
+                        padding: 5px 10px;
+                        margin-right: 10px;
+                    }
+
+
+
+
+                </style>
+            </head>
+            <body>
+
+            <div class="navbar">
+                <div>
+                    <a class="active" href="/homemenu">Home</a>
+                    <a href="/profiles">Family Profiles</a>
+                </div>
+                <div class="navbar-right">
+                    <span th:text="${username}">Welcome User</span>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <form action="/insert" method="post">
+                    <div class="inputs">
+                        <input type="text" name="preferenceName" placeholder="Enter Preference Name" required>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Bed:</p>
+
+                        <div>
+                            <input type="radio" id="default_bed" name="bed" value="Default" class="radio" checked>
+                            <label for="default_bed">
+                                <img src="/options/default_bed.png" alt="default bed">
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="pink_bed" name="bed" value="Pink">
+                            <label for="pink_bed">
+                                <img src="/options/pink_bed.png" alt="pink bed">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Chair:</p>
+
+                        <div>
+                            <input type="radio" id="default_chair" name="chair" value="Default" checked>
+                            <label for="default_chair">
+                                <img src="/options/default_chair.png" alt="default tv">
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="pink_chair" name="chair" value="Pink">
+                            <label for="pink_chair">
+                                <img src="/options/pink_chair.png" alt="pink_chair">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Computer:</p>
+
+                        <div>
+                            <input type="radio" id="default_computer" name="computer" value="Default" checked>
+                            <label for="default_computer">
+                                <img src="/options/default_computer.png" alt="default_computer">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_computer" name="computer" value="Pink">
+                            <label for="pink_computer">
+                                <img src="/options/pink_computer.png" alt="pink_computer">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Couch:</p>
+
+                        <div>
+                            <input type="radio" id="default_couch" name="couch" value="Default" checked>
+                            <label for="default_couch">
+                                <img src="/options/default_couch.png" alt="default_couch">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_couch" name="couch" value="Pink">
+                            <label for="pink_couch">
+                                <img src="/options/pink_couch.png" alt="pink_couch">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Cupboard:</p>
+
+                        <div>
+                            <input type="radio" id="default_cupboard" name="cupboard" value="Default" checked>
+                            <label for="default_cupboard">
+                                <img src="/options/default_cupboard.png" alt="default_cupboard">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_cupboard" name="cupboard" value="Pink">
+                            <label for="pink_cupboard">
+                                <img src="/options/pink_cupboard.png" alt="pink_cupboard">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Fridge:</p>
+
+                        <div>
+                            <input type="radio" id="default_fridge" name="fridge" value="Default" checked>
+                            <label for="default_fridge">
+                                <img src="/options/default_fridge.png" alt="default_fridge">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_fridge" name="fridge" value="Pink">
+                            <label for="pink_fridge">
+                                <img src="/options/pink_fridge.png" alt="pink_fridge">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Lamp:</p>
+
+                        <div>
+                            <input type="radio" id="default_lamp" name="lamp" value="Default" checked>
+                            <label for="default_lamp">
+                                <img src="/options/default_lamp.png" alt="default lamp">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_lamp" name="lamp" value="Pink">
+                            <label for="pink_lamp">
+                                <img src="/options/pink_lamp.png" alt="pink lamp">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Microwave:</p>
+
+                        <div>
+                            <input type="radio" id="default_microwave" name="microwave" value="Default" checked>
+                            <label for="default_microwave">
+                                <img src="/options/default_microwave.png" alt="default_microwave">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_microwave" name="microwave" value="Pink">
+                            <label for="pink_microwave">
+                                <img src="/options/pink_microwave.png" alt="pink_microwave">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Mirror:</p>
+
+                        <div>
+                            <input type="radio" id="default_mirror" name="mirror" value="Default" checked>
+                            <label for="default_mirror">
+                                <img src="/options/default_mirror.png" alt="default_mirror">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_mirror" name="mirror" value="Pink">
+                            <label for="pink_mirror">
+                                <img src="/options/pink_mirror.png" alt="pink_mirror">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Recliner:</p>
+
+                        <div>
+                            <input type="radio" id="default_recliner" name="recliner" value="Default" checked>
+                            <label for="default_recliner">
+                                <img src="/options/default_recliner.png" alt="default_recliner">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_recliner" name="lamp" value="Pink">
+                            <label for="pink_recliner">
+                                <img src="/options/pink_recliner.png" alt="pink_recliner">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select TV:</p>
+
+                        <div>
+                            <input type="radio" id="default_tv" name="tv" value="Default" checked>
+                            <label for="default_tv">
+                                <img src="/options/default_tv.png" alt="default tv">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_tv" name="tv" value="Pink">
+                            <label for="pink_tv">
+                                <img src="/options/pink_tv.png" alt="pink_tv">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Wardrobe:</p>
+
+                        <div>
+                            <input type="radio" id="default_wardrobe" name="wardrobe" value="Default" checked>
+                            <label for="default_wardrobe">
+                                <img src="/options/default_wardrobe.png" alt="default_wardrobe">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_wardrobe" name="wardrobe" value="Pink">
+                            <label for="pink_wardrobe">
+                                <img src="/options/pink_wardrobe.png" alt="pink_wardrobe">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <p>Please Select Theme:</p>
+
+                        <div>
+                            <input type="radio" id="default_theme" name="theme" value="Default" checked>
+                            <label for="default_theme">
+                                <img src="/options/default_theme.png" alt="default_theme">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pink_theme" name="theme" value="Pink">
+                            <label for="pink_theme">
+                                <img src="/options/pink_theme.png" alt="pink_theme">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+
+
+                        <textarea id="messageBedroom" name="message_Bedroom" rows="4" cols="50" placeholder="Please enter the input that you want the child to see once they finish the Bedroom Level"></textarea><br><br>
+                    </div>
+
+                    <div>
+
+                        <textarea id="messageKitchen" name="message_Kitchen" rows="4" cols="50" placeholder="Please enter the input that you want the child to see once they finish the Kitchen Level"></textarea><br><br>
+
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Submit" />
+                    </div>
+                </form>
+
+            </div>
+
+            </body>
+            </html>
+

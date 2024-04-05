@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <script>
+        var check = function() {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Entered Passwords are matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Entered Passwords are not matching';
+            }
+        }
+    </script>
+    <style>
+
+
+        html, body {
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            background: url('/options/test.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 2%;
+            background-color: lightgreen;
+        }
+
+        .container {
+            text-align: center;
+            color: #333;
+            width: 500px;
+            max-width: 90%;
+            padding: 30px;
+            border-radius: 20px;
+            background: #fffdfd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Time Roman';
+            color: #4caf50;
+            font-size: 35px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #4caf50;
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover, button:focus {
+            background-color: #388e3c;
+        }
+
+        #message {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>User Registration</h1>
+    <!-- The form sending post data to /signup in application controller-->
+    <form th:action="@{/signup}" method="post">
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <input type="password" name="password" id="password" placeholder="Enter Password" required>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" onkeyup='check();'required>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <span id='message'></span>
+        <div class="buttons">
+            <button type="submit" value="Sign Up">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

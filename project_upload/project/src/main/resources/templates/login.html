@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"> <!-- Java library for server-side template processing-->
+
+<head>
+    <title>Welcome to Energy Learning Arena!</title>
+    <style>
+
+       html, body {
+            height: 100%;
+            font-family: 'Times Roman';
+            background: url('/options/test.jpg') no-repeat left fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 2%;
+            background-color: lightgreen;
+        }
+
+        .container {
+            text-align: center;
+            color: #333;
+            width: 400px;
+            height : 300px;
+            max-width: 90%;
+            padding: 30px;
+            border-radius: 20px;
+            background: #fffdfd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-family: 'Times Roman';
+            color: #4caf50;
+            font-size: 35px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input {
+            width: calc(100% - 40px);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #4caf50;
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover, button:focus {
+            background-color: #388e3c;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+
+        }
+
+        label {
+            color: Red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Welcome to Eco Explorers</h1>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit" name="submit">Login</button>
+    </form> <br><br>
+    <a href="/signup">New here? Register now!</a> <br><br>
+    <label th:text="${error}">Incorrect username or password</label>
+    <!-- Error message directly filled by thymeleaf from backend -->
+</div>
+</body>
+
+</html>
